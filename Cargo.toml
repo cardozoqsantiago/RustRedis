@@ -1,0 +1,23 @@
+[package]
+name = "RustRedis"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cached = "0.30.0"
+csv = "1.1"
+serde = { version = "1", features = ["derive"] }
+rand = "0.8.4"
+dotenv = "0.15.0"
+chrono = { version = "0.4", features = ["serde"]}
+serde_derive = "1.0.130"
+actix-web = "3"
+lazy_static = "*"
+persistentcache = { git = "https://github.com/stefan-k/persistentcache-rs.git" }
+persistentcache_procmacro = "*" 
+#persistentcache = "*"
+bincode = "1.3.3"
+
+
