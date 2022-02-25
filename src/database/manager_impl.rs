@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 use mongodb::sync::Collection;
 use mongodb::sync::Client;
 
@@ -10,11 +11,11 @@ pub struct Manager {
 
 impl Manager{
     pub fn new() -> Self{
-        let conn_string = std::env::var_os("MONGODB_URL").expect("missing environment variable MONGODB_URL").to_str().expect("failed to get MONGODB_URL").to_owned();
-        let db_name = std::env::var_os("MONGODB_DATABASE").expect("missing environment variable MONGODB_DATABASE").to_str().expect("failed to get MONGODB_DATABASE").to_owned();
-        let coll_name = std::env::var_os("MONGODB_COLLECTION").expect("missing environment variable MONGODB_COLLECTION").to_str().expect("failed to get MONGODB_COLLECTION").to_owned();
+        let conn_string = "mongodb://localhost:C2y6yDjf5%2FR%2Bob0N8A7Cgv30VRDJIWEHLM%2B4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw%2FJw%3D%3D@localhost:10255/admin?ssl=true";
+        let db_name = "SampleDB";
+        let coll_name = "Persons";
         let mongo_client = Client::with_uri_str(&*conn_string).expect("failed to create client");
-        let todo_coll = mongo_client.database(db_name.as_str()).collection(coll_name.as_str());
+        let todo_coll = mongo_client.database(db_name).collection(coll_name);
             
         Manager{coll: todo_coll}
     }
@@ -32,6 +33,6 @@ impl Manager{
         let todo_doc = mongodb::bson::to_bson(&new_record).expect("struct to BSON conversion failed").as_document().expect("BSON to Document conversion failed").to_owned();
         
         let r = self.coll.insert_one(todo_doc, None).expect("failed to add todo");    
-        println!("inserted todo with id = {}", r.inserted_id);
+        println!("inserted record with id = {}", r.inserted_id);
     }
 }
