@@ -28,4 +28,7 @@ features = ["sync"]
 [dependencies.bson]
 version = "1.1.0"
 
+[dependencies.redis]
+version = "*"
+
 
