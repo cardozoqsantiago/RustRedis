@@ -19,3 +19,12 @@ async fn record_controller() -> HttpResponse {
     .await
     .unwrap()
 }
+
+#[post("/conecction/")]
+async fn connect() -> HttpResponse {
+    services::connect();
+    HttpResponse::Ok()
+    .content_type("application/json")
+    .await
+    .unwrap()
+}

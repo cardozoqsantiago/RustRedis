@@ -19,7 +19,8 @@ impl Manager{
             
         Manager{coll: todo_coll}
     }
-
+    
+    #[allow(dead_code)]
     pub fn add_todo(self, type_energy: &str, date: &str , units: i32, value: i8, tol: i8 ) {
         let new_record = record::Record {
             id: "001".to_string(),
